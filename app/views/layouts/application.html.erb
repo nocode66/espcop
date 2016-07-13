@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Occult Library</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    
+    
+
+    
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="occultlibrary.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- Favicone Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+    <!-- CSS -->
+    <link href="/assets/style.css" rel="stylesheet" type="text/css" />
+     <link href="/assets/bootstrap.css" rel="stylesheet" type="text/css" /> %>
+    <link href="/assets/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugin/jPushMenu.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugin/animate.css" rel="stylesheet" type="text/css" />
+    <%# <link href="/assets/jquery-ui.css" rel="stylesheet" type="text/css" /> %>
+    
+     <script src="https://js.stripe.com/v2/" async></script>
+     
+</head>
+
+<body class="full-intro">
+   
+    <!-- Preloader -->
+    <section id="preloader">
+        <div class="loader" id="loader">
+            <div class="loader-img"></div>
+        </div>
+    </section>
+    <!-- End Preloader -->
+    
+    <%= growlyflash_static_notices %>
+    
+    
+    <%= render partial: 'partials/side_menu' %>
+    <%= render partial: 'partials/search_menu_top' %>
+   
+
+
+
+    <!-- Site Wraper -->
+    <div class="wrapper">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+
+                <!-- logo -->
+                <div class="logo">
+                    <a href="home.html">
+                        <img class="l-black" src="/assets/logo-black.png" />
+                        <img class="l-white" src="/assets/logo-white.png" />
+                        <img class="l-color" src="/assets/logo-color.png" />
+                    </a>
+                </div>
+                <!--End logo-->
+
+                <!-- Rightside Menu (Search, Cart, Bart icon) -->
+                <div class="side-menu-btn">
+                    <ul>
+                        <!-- Search Icon -->
+                        <li class="">
+                            <a class="right-icon search toggle-menu menu-top push-body"><i class="fa fa-search"></i></a>
+                        </li>
+                        <!-- End Search Icon -->
+
+                       
+
+                        <!--Sidebar Menu Icon-->
+                        <li class="">
+                            <a class="right-icon bar-icon toggle-menu menu-right push-body"><i class="fa fa-bars"></i></a>
+                        </li>
+                        <!-- End Sidebar Menu Icon-->
+                    </ul>
+                </div>
+                <!-- End Rightside Menu -->
+
+                <!-- Navigation Menu -->
+               <%= render partial: "partials/top_navigation" %>
+
+            </div>
+        </header>
+        <!-- END HEADER -->
+
+        <!-- CONTENT --------------------------------------------------------------------------------->
+
+     
+
+        
+        <hr />
+
+        <!-- Contant Slider Section -->
+        <section id="contant" class="wow fadeIn ptb ptb-sm-80">
+            <%= yield %>
+        </section>
+        <!-- End Contain Slider Section -->
+
+       
+
+       
+
+        <!-- END CONTENT ---------------------------------------------------------------------------->
+
+        <%= render partial: 'partials/footer' %>
+
+
+        <!-- Scroll Top -->
+        <a class="scroll-top">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+        <!-- End Scroll Top -->
+
+    </div>
+    <!-- Site Wraper End -->
+
+
+<% render partial: 'partials/scripts' %>
+
+
+
+</body>
+</html>

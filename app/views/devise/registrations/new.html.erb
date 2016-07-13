@@ -1,0 +1,98 @@
+
+
+
+<%= javascript_include_tag :defaults, 'charges' %>
+
+<%= devise_error_messages! %>
+
+   <section class="inner-intro inner-intro-small">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="h2">Register</h2>
+                    <div class="page-breadcrumb">
+                        <a>Home</a>/<span>Register</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <!-- End Intro Section -->
+
+
+        <!-- Login Section -->
+        <section id="Pricing" class="ptb ptb-sm-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="border-box">
+                            <h4>Create an Account</h4>
+                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+                            <%= f.hidden_field :stripe_card_token %>
+                            <%= f.hidden_field( :subscription_plan_id, value: params[:subscription_plan]) %>
+                            
+                              
+                              <div id='stripe_error' class="alert alert-info" style='display:none'>
+</div>
+
+
+                                <div class="form-field-wrapper">
+                                    <%= f.label :email %>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        </span>
+                                        <%= f.email_field :email, autofocus: true,  placeholder: "Enter your Email", class: "input-sm form-full", required: true %>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-field-wrapper">
+                                    <%= f.label :password %>
+                                    <% if @minimum_password_length %>
+                                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                    <% end %><br />
+                                    <%= f.password_field :password, autocomplete: "off", class: "input-sm form-full", required: true %>
+                                </div>
+                                <div class="form-field-wrapper">
+                                    <%= f.label :password_confirmation %><br />
+                                    <%= f.password_field :password_confirmation, class: "input-sm form-full", autocomplete: "off", required: true %>
+                                </div>
+                     
+                            
+                             <div class='form-field-wrapper'>
+                                 
+                              
+		  <% if @user.stripe_card_token.present? %>
+		  	Credit Card is on File
+		  <% else %>
+			  <div class='form-group has-feedback'>
+			  	<%= label_tag :card_number, "Credit Card Number" %>
+			  	<%= text_field_tag :card_number, nil,   maxlength: 24, name: nil, class: 'input-sm form-full', pattern: "[0-9]{13,16}",  placeholder: "1112 1112 1112 1112" %>
+			  </div>
+              <div class='row'>
+    			  <div class='form-group col-md-6'>
+    			  	<%= label_tag :card_code, "Security Code on Card (CVV)" %><br />
+    				<%= text_field_tag :card_code, nil, name: nil, maxlength: 3 %>
+    				</div>
+    			   <div class='form-group'>	
+    				<%= label_tag :card_month, "Card Expiration" %> <br />
+    				<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    				<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    			  </div>
+			  </div>
+		 <% end %>
+		  <div class='form-group'>
+                  <%= f.submit "Sign up", class: "btn btn-md btn-black center-block" %>
+            </div>   
+            </div>
+                            <% end %>
+                        </div>
+                       
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- End Login Section -->
+
+        <!-- End CONTENT ------------------------------------------------------------------------------>

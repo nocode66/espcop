@@ -1,0 +1,30 @@
+<div class="col-md-4">
+    <div class="Pricing-box highlight">
+        <div class="price-title spacing-box">
+            <h4><%= plan.name %></h4>
+        </div>
+        <hr />
+        <div class="spacing-box">
+            <div class="price"><span class="price-sm"><%= currency_sign(plan.currency).html_safe %></span><span class="price-lg"><%= number_with_precision(plan.amount, precision: 2) %></span></div>
+            <div class="price-tenure">per
+                <%=pluralize(plan.interval_count ,plan.interval) %>
+            </div>
+        </div>
+        <hr />
+        <div class="pricing-features spacing-grid">
+            <ul>
+                <li>Full access</li>
+                <li>
+                    <%=plan.tokens %> Download <strong>Tokens</strong></li>
+                <li>
+                    <%=plan.trial_period_days > 0 ? pluralize(plan.trial_period_days, 'Day Trial') : ' <br />'.html_safe %>
+                </li>
+            </ul>
+        </div>
+        <hr />
+        <div class="spacing-grid">
+            <%= link_to 'Sign Up!',new_user_registration_path(subscription_plan: plan), class:"btn btn-md btn-black" %>
+      
+        </div>
+    </div>
+</div>

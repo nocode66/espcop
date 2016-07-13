@@ -1,0 +1,13 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "angular": "~> 1.5",
+    "angular-mocks": "latest",
+    "font-awesome": "latest",
+    "jquery-ui": "latest",
+    "card-js": "latest"
+  },
+  "resolutions": {
+    "angular": "1.5"
+  }
+}

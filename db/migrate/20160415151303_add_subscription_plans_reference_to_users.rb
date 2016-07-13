@@ -1,0 +1,5 @@
+class AddSubscriptionPlansReferenceToUsers < ActiveRecord::Migration[5.0]
+  def change
+    add_reference :users, :subscription_plan, index: true, foreign_key: true
+  end
+end

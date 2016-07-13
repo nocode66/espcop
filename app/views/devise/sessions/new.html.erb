@@ -1,0 +1,53 @@
+<!-- Intro Section -->
+        <section class="inner-intro inner-intro-small">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="h2">Login-Register</h2>
+                    <div class="page-breadcrumb">
+                        <a>Home</a>/<span>Login-Register</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <!-- End Intro Section -->
+
+<%= devise_error_messages! %>
+        <!-- Login Section -->
+        <section id="Pricing" class="ptb ptb-sm-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="tabs b-lrb-none">
+
+                           
+                            <div class="ui-tab-content">
+                                <div id="tabs-1" class="plr-0">
+                                    <h4>Member Login</h4>
+                                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                        <div class="form-field-wrapper">
+                                             <%= f.label :email %><br />
+                                             <%= f.email_field :email, autofocus: true, placeholder: "Enter your Email",   class: "input-sm form-full", required: true  %>
+                                        </div>
+                                        <div class="form-field-wrapper">
+                                            <%= f.label :password %><br />
+                                            <%= f.password_field :password, autocomplete: "off", class: "input-sm form-full", required: true %>
+                                        </div>
+                                       
+                                         <%= f.submit "Log In", class: "btn btn-md btn-black" %>
+                         
+                                       <%= render "devise/shared/links" %>
+                                      <% end -%>
+                                </div>
+                                
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
