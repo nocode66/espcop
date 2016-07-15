@@ -1,0 +1,102 @@
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /usr/local/rvm/gems/ruby-2.3.0/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /usr/local/rvm/gems/ruby-2.3.0/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:ApplicationController> at /home/ubuntu/workspace/app/controllers/application_controller.rb:5)
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" serial primary key, "namespace" character varying, "body" text, "resource_id" character varying NOT NULL, "resource_type" character varying NOT NULL, "author_type" character varying, "author_id" integer, "created_at" timestamp, "updated_at" timestamp)[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" USING btree ("author_type", "author_id")[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments" USING btree ("namespace")[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" USING btree ("resource_type", "resource_id")[0m
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users" USING btree ("email")[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users" USING btree ("reset_password_token")[0m
+  [1m[35m (17.2ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admins_on_email" ON "admins" USING btree ("email")[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admins_on_reset_password_token" ON "admins" USING btree ("reset_password_token")[0m
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE TABLE "books" ("id" serial primary key, "title" character varying, "description" text, "authors" character varying, "tableOfContents" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cover_file_name" character varying, "cover_content_type" character varying, "cover_file_size" integer, "cover_updated_at" timestamp, "file_file_name" character varying, "file_content_type" character varying, "file_file_size" integer, "file_updated_at" timestamp, "tokens" integer DEFAULT 1 NOT NULL)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "books_categories" ("book_id" integer, "category_id" integer)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_books_categories_on_book_id" ON "books_categories" USING btree ("book_id")[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE  INDEX  "index_books_categories_on_category_id" ON "books_categories" USING btree ("category_id")[0m
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "description" text, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp, "books_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "default" boolean)[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_books_id" ON "categories" USING btree ("books_id")[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE "subscription_plans" ("id" serial primary key, "amount" decimal(8,2) NOT NULL, "interval" character varying NOT NULL, "name" character varying NOT NULL, "currency" character varying DEFAULT 'usd' NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "stripe_id" character varying NOT NULL, "interval_count" integer DEFAULT 1 NOT NULL, "statement_descriptor" character varying, "trial_period_days" integer DEFAULT 0, "visible" boolean DEFAULT 'f' NOT NULL, "tokens" integer DEFAULT 20 NOT NULL)[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "subscription_plan_id" integer, "stripe_card_token" character varying)[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_subscription_plan_id" ON "users" USING btree ("subscription_plan_id")[0m
+  [1m[35m (7.5ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_12dec6e4a8"
+FOREIGN KEY ("books_id")
+  REFERENCES "books" ("id")
+[0m
+  [1m[35m (7.3ms)[0m  [1m[35mALTER TABLE "users" ADD CONSTRAINT "fk_rails_e2413b5781"
+FOREIGN KEY ("subscription_plan_id")
+  REFERENCES "subscription_plans" ("id")
+[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160420171144')[0m
+  [1m[35m (2.9ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160408144728'), ('20160407085336'), ('20160322165221'), ('20160406123328'), ('20160408113844'), ('20160323144430'), ('20160407094823'), ('20160322165157'), ('20160323144841'), ('20160407090423'), ('20160328124012'), ('20160415151303'), ('20160406135542'), ('20160328115248'), ('20160405141817'), ('20160328150712'), ('20160407150810');
+
+[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-07-14 15:51:37 UTC], ["updated_at", 2016-07-14 15:51:37 UTC]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (20.9ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" serial primary key, "namespace" character varying, "body" text, "resource_id" character varying NOT NULL, "resource_type" character varying NOT NULL, "author_type" character varying, "author_id" integer, "created_at" timestamp, "updated_at" timestamp)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" USING btree ("author_type", "author_id")[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments" USING btree ("namespace")[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" USING btree ("resource_type", "resource_id")[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users" USING btree ("email")[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users" USING btree ("reset_password_token")[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admins_on_email" ON "admins" USING btree ("email")[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admins_on_reset_password_token" ON "admins" USING btree ("reset_password_token")[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "books" ("id" serial primary key, "title" character varying, "description" text, "authors" character varying, "tableOfContents" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "cover_file_name" character varying, "cover_content_type" character varying, "cover_file_size" integer, "cover_updated_at" timestamp, "file_file_name" character varying, "file_content_type" character varying, "file_file_size" integer, "file_updated_at" timestamp, "tokens" integer DEFAULT 1 NOT NULL)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "books_categories" ("book_id" integer, "category_id" integer)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE  INDEX  "index_books_categories_on_book_id" ON "books_categories" USING btree ("book_id")[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE  INDEX  "index_books_categories_on_category_id" ON "books_categories" USING btree ("category_id")[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "name" character varying, "description" text, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp, "books_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "default" boolean)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_books_id" ON "categories" USING btree ("books_id")[0m
+  [1m[35m (18.4ms)[0m  [1m[35mCREATE TABLE "subscription_plans" ("id" serial primary key, "amount" decimal(8,2) NOT NULL, "interval" character varying NOT NULL, "name" character varying NOT NULL, "currency" character varying DEFAULT 'usd' NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "stripe_id" character varying NOT NULL, "interval_count" integer DEFAULT 1 NOT NULL, "statement_descriptor" character varying, "trial_period_days" integer DEFAULT 0, "visible" boolean DEFAULT 'f' NOT NULL, "tokens" integer DEFAULT 20 NOT NULL)[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "subscription_plan_id" integer, "stripe_card_token" character varying)[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_subscription_plan_id" ON "users" USING btree ("subscription_plan_id")[0m
+  [1m[35m (8.1ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_12dec6e4a8"
+FOREIGN KEY ("books_id")
+  REFERENCES "books" ("id")
+[0m
+  [1m[35m (6.4ms)[0m  [1m[35mALTER TABLE "users" ADD CONSTRAINT "fk_rails_e2413b5781"
+FOREIGN KEY ("subscription_plan_id")
+  REFERENCES "subscription_plans" ("id")
+[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160420171144')[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160408144728'), ('20160407085336'), ('20160322165221'), ('20160406123328'), ('20160408113844'), ('20160323144430'), ('20160407094823'), ('20160322165157'), ('20160323144841'), ('20160407090423'), ('20160328124012'), ('20160415151303'), ('20160406135542'), ('20160328115248'), ('20160405141817'), ('20160328150712'), ('20160407150810');
+
+[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-07-14 15:51:38 UTC], ["updated_at", 2016-07-14 15:51:38 UTC]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "$2a$11$JGqMe5wUu9i0Coi6ZKNFouUzcQ9G91GPyJNJiz9MKPZyR2Yx.xP9K"], ["created_at", 2016-07-14 15:51:38 UTC], ["updated_at", 2016-07-14 15:51:38 UTC]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /usr/local/rvm/gems/ruby-2.3.0/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /usr/local/rvm/gems/ruby-2.3.0/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:ApplicationController> at /home/ubuntu/workspace/app/controllers/application_controller.rb:5)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /usr/local/rvm/gems/ruby-2.3.0/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /usr/local/rvm/gems/ruby-2.3.0/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:ApplicationController> at /home/ubuntu/workspace/app/controllers/application_controller.rb:5)
