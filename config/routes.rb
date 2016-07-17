@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine => '/stripe-events'
   
   root to: "static#home"
+  post '/tinymce_assets' => 'tinymce_assets#create'
 end

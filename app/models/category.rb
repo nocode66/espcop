@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :books
+  has_many :articles
   has_attached_file :image, styles: {thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
