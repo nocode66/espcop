@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717181542) do
+ActiveRecord::Schema.define(version: 20160726185102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,41 +63,6 @@ ActiveRecord::Schema.define(version: 20160717181542) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "subtitle"
-    t.text     "content"
-    t.integer  "status"
-    t.string   "header_img"
-    t.boolean  "featured",    default: false
-    t.string   "icon_img"
-    t.boolean  "commentable", default: false
-    t.string   "menu_title"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "category_id"
-    t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
-    t.index ["title"], name: "index_articles_on_title", using: :btree
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "authors"
-    t.text     "tableOfContents"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
-    t.integer  "tokens",             default: 1, null: false
-  end
-
   create_table "books_categories", id: false, force: :cascade do |t|
     t.integer "book_id"
     t.integer "category_id"
@@ -112,11 +77,30 @@ ActiveRecord::Schema.define(version: 20160717181542) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "books_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.boolean  "default"
-    t.index ["books_id"], name: "index_categories_on_books_id", using: :btree
+  end
+
+  create_table "content_items", force: :cascade do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.text     "content"
+    t.integer  "status"
+    t.boolean  "featured",           default: false
+    t.boolean  "commentable",        default: false
+    t.string   "menu_title"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "category_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "visible",            default: false
+    t.string   "slug"
+    t.index ["category_id"], name: "index_content_items_on_category_id", using: :btree
+    t.index ["title"], name: "index_content_items_on_title", using: :btree
   end
 
   create_table "subscription_plans", force: :cascade do |t|
@@ -163,6 +147,5 @@ ActiveRecord::Schema.define(version: 20160717181542) do
     t.index ["subscription_plan_id"], name: "index_users_on_subscription_plan_id", using: :btree
   end
 
-  add_foreign_key "categories", "books", column: "books_id"
   add_foreign_key "users", "subscription_plans"
 end

@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_many :articles
+  has_many :content_items
   has_attached_file :image, styles: {thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
@@ -10,7 +10,7 @@ class Category < ApplicationRecord
   before_destroy :check_destroy_prerequisites
 
   def empty?
-    self.books.count == 0
+    self.content_items.count == 0
   end
 
   def self.default_id
@@ -22,7 +22,7 @@ class Category < ApplicationRecord
   private
     
   def check_destroy_prerequisites
-    raise ( "Cannot delete category with assigned books.") unless books.empty?
+    raise ( "Cannot delete category with assigned articles.") unless content_items.empty?
     raise ( "Cannot delete default category.") if default?
     
   end

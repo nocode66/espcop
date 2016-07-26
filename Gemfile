@@ -33,6 +33,7 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'tinymce-rails-imageupload', '~> 3.5.8'
 gem 'stripe_event'
+gem 'gibbon'
 
 gem 'docverter'
 # Use Capistrano for deployment

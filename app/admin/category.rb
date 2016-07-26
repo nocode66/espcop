@@ -33,8 +33,8 @@ index do |category|
   column :default do |item|
    status_tag('Default', :ok) if item.default?
   end
-  column :number_of_books, sortable: true do |item|
-      item.books.size
+  column :number_of_articles, sortable: true do |item|
+      item.content_items.size
   end
   
   actions
@@ -60,7 +60,7 @@ form :html => { :enctype => "multipart/form-data" } do |f|
        f.input :name
        f.input :image, hint: f.category.image? ? image_tag(f.category.image.url(:thumb), height: '100') : content_tag(:span, "Upload JPG/PNG/GIF image")
        f.input :default if !category.default?
-       f.input :description, as: :html_editor
+       f.input :description, :input_html => { :class => "tinymce" }
     end
     f.actions
     end
