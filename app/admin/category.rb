@@ -1,7 +1,9 @@
 ActiveAdmin.register Category do
+  config.sort_order = 'order_desc'
 
 filter :name
 filter :description
+filter :order
 
 controller do   
     def destroy
@@ -9,7 +11,7 @@ controller do
         if category.default? 
             flash[:error] = "Can't delete the default category"
         elsif !category.empty?
-           flash[:error] = "Could not delete category. There are still books associated to it."
+           flash[:error] = "Could not delete category. There are still articles associated to it."
         else   
             category.destroy!
         end
@@ -21,7 +23,7 @@ end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
- permit_params :name,:image, :cover, :description, :default
+ permit_params :name,:image, :cover, :description, :default, :order
 #
 #
 index do |category|
@@ -60,6 +62,7 @@ form :html => { :enctype => "multipart/form-data" } do |f|
        f.input :name
        f.input :image, hint: f.category.image? ? image_tag(f.category.image.url(:thumb), height: '100') : content_tag(:span, "Upload JPG/PNG/GIF image")
        f.input :default if !category.default?
+       f.input :order
        f.input :description, :input_html => { :class => "tinymce" }
     end
     f.actions

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   
   
   resources :subscription_plans, only: [:index]
+  resources :content_items, only: [:show]
+  resources :category, only: [:show]
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config

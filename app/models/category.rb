@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
+  validates :order, presence: true, uniqueness: true
   
   before_save :set_default, if: :default?
   before_destroy :check_destroy_prerequisites
@@ -19,6 +20,11 @@ class Category < ApplicationRecord
     end
   end
   
+  def has_published_articles?
+    !content_items.where(visible: true).empty?
+  end
+
+
   private
     
   def check_destroy_prerequisites

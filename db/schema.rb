@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726185102) do
+ActiveRecord::Schema.define(version: 20160727084708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 20160726185102) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "string"
+    t.string   "last_name"
+    t.string   "title"
+    t.text     "bio"
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -80,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160726185102) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.boolean  "default"
+    t.integer  "order"
   end
 
   create_table "content_items", force: :cascade do |t|
@@ -99,6 +105,8 @@ ActiveRecord::Schema.define(version: 20160726185102) do
     t.datetime "image_updated_at"
     t.boolean  "visible",            default: false
     t.string   "slug"
+    t.integer  "order"
+    t.boolean  "archived"
     t.index ["category_id"], name: "index_content_items_on_category_id", using: :btree
     t.index ["title"], name: "index_content_items_on_title", using: :btree
   end

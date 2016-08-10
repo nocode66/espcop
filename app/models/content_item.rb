@@ -18,6 +18,7 @@ class ContentItem < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :subtitle, presence: true
   validates :content, presence: true
+  validates :order, presence: true, uniqueness: true 
 
   before_validation :generate_slug
   before_save :set_defaults
