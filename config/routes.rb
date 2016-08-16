@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :newsletters
+  resources :events, only: [:show, :index]
+  resources :newsletters, only: :index
   get 'static/home'
   get '/about', to: 'static#about', as: 'about'
   get '/contact', to: 'static#contact', as: 'contact'
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
+
+ get '/admin/subscriber', to:  'admin/subscriber#index'
   mount StripeEvent::Engine => '/stripe-events'
   
   root to: "static#home"
