@@ -55,6 +55,8 @@ gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
 gem 'paper_trail'
 
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'valid_url'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

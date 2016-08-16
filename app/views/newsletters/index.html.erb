@@ -1,0 +1,43 @@
+  <!-- Intro Section -->
+  <section class="inner-intro bg-img2 overlay-light parallax parallax-background2">
+    <div class="container">
+        <div class="row title">
+            <h2 class="h2">Newsletter Archive</h2>
+            <div class="page-breadcrumb">
+                /<span>Newsletters</span>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+<!-- End Intro Section -->
+
+
+<!-- Newsletter Section -->
+<section class="ptb ptb-sm-80">
+    <div class="container">
+        <div class="tabs b-lrb-none">
+            <ul class="list-inline">
+               <% @newsletters.each_with_index do |(year, newsletters),i| %>
+               <li><a href="#tabs-<%=i+1%>"><i class="fa fa-calendar"></i><%= year %></a></li>
+               <% end %>
+           </ul>
+           <div class="ui-tab-content">
+            <% @newsletters.each_with_index do |(year, newsletters),i| %>
+            <div id="tabs-<%= i+1 %>" class="plr-0">
+                <!-- Accordion -->
+
+                <div class="accordion">
+                    <% newsletters.each do |newsletter| %>
+                    <div class="accordion-section">
+                        <h6 class="accordion-title"><%=link_to  newsletter.title, newsletter.url, target: "_blank" %></h6>
+                    </div>
+                    <%end%>
+                </div>
+            </div>
+            <% end %>
+            <!-- End Accordion -->
+        </div>
+    </div>
+</div>
+</section>
