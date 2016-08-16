@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   get 'static/home'
   get '/about', to: 'static#about', as: 'about'
   get '/contact', to: 'static#contact', as: 'contact'
+  get '/board', to: 'static#board', as: 'board'
   
   
   resources :subscription_plans, only: [:index]
-  resources :content_items, only: [:show]
+  resources :content_items, only: [:show], path: 'articles'
   resources :category, only: [:show]
+  resources :newsletters, only: [:index]
+  
+  get '/past-events', to: 'events#past'
+  get '/events', to: 'events#future'
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
