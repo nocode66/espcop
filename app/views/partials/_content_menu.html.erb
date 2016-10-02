@@ -1,15 +1,16 @@
-<% @categories.each do  |category| %>
-   <a><%= category.name %></a>
-   <ul class="nav-dropdown">
-   <% category.content_items.each do |ci| %>
-        <% if ci.visible? %>
-             <li>
-            <%= link_to ci.title, ci %>
-            </li>
-        <% end %>    
-   <% end %>
-   </ul>
+<% unless @categories.nil? %>
+  <% @categories.each do  |category| %>
+     <a><%= category.name %></a>
+     <ul class="nav-dropdown">
+     <% category.content_items.each do |ci| %>
+          <% if ci.visible? %>
+               <li>
+              <%= link_to ci.title, ci %>
+              </li>
+          <% end %>    
+     <% end %>
+     </ul>
+  <% end %>
 <% end %>
-
 
  

@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <h3>Get In Touch</h3>
-                        <p class="lead">Nullam dictum felis eu pede mollis pretium leo eget bibendum sodales augue velit cursus. tellus eget condimentum rhoncus sem quam semper libero.</p>
+                        <p class="lead"> Founded in feb 2009 in Bruges this society is intended for all European Anaesthesiologist active with obese patients. It is staying open also for Non European and non anesthetist physicians.</p>
                     </div>
                 </div>
                 <div class="spacer-75"></div>
@@ -31,32 +31,30 @@
                     <div class="col-md-5 contact">
                         <div class="contact-box-left mb-45">
                             <div class="contact-icon-left"><i class="ion ion-ios-location"></i></div>
-                            <h6>Additional info</h6>
+                            <h6>Address</h6>
                             <p>
-                                502, DieSachbearbeiter, Schönhauser Allee,<br />
-                                167c10435 Berlin,Germany.
+                               Sint Jan Brugge-Oostende,
+Ruddershove 10,
+8000 Brugge, Belgium
                             </p>
-                            <a href="mailto:yourname@domain.com"><i class="fa fa-envelope-o left"></i>yourname@domain.com</a><br />
-                            <a><i class="fa fa-phone left"></i>+40 (0) 012 345 6789</a>
+                            <a href="mailto:info@espcop.com"><i class="fa fa-envelope-o left"></i>info@espcop.com</a><br />
+                            <a><i class="fa fa-fax left"></i>Fax: 00 32 50 45 28 99</a>
                         </div>
                         <div class="contact-box-left mb-45">
                             <div class="contact-icon-left"><i class="ion ion-ios-clock"></i></div>
                             <h6>Business Hours</h6>
                             <p>
-                                <span>Mon - Fri: 9am to 6pm</span>
+                                <span>Mon - Fri: 10am to 6pm</span>
                                 <br />
-                                <span>Sat : 9am to 1pm</span>
+                                <span>Sat : Closed</span>
                             </p>
                         </div>
                         <div class="contact-box-left mb-45">
 
                             <h6>Follow Us</h6>
                             <ul class="list-none social">
-                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://vimeo.com/" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
-                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
+                                <li><a target="_blank" href="https://twitter.com/espcop"><i class="fa fa-twitter"></i></a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/espcop"><i class="fa fa-facebook"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -92,7 +90,7 @@
                                 <textarea class="form-full" id="form-message" rows="7" name="form-message" placeholder="Your Message" required></textarea>
                             </div>
 
-                            <button class="btn btn-md btn-black form-full" type="submit" id="form-submit" name="submit">Send Message</button>
+                            <button class="btn btn-md btn-black form-full" type="submit" id="form-submit" name="submit" >Send Message</button>
                         </form>
                         <!-- END Contact FORM -->
                     </div>
@@ -106,7 +104,17 @@
             <div id="map"></div>
         </section>
         <!-- Map Section -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#form-submit').click(function() {
+        $('#contact').attr('action',
+                       'mailto:info@espcop.org?subject=' +
+                       $('#form-subject').val() + '&body=' + $('#form-message').val());
+        $('#contact').submit();
+    });
+});
 
+</script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkNDCoqqePVRdMLZ2OJt3CKCJE0llYb6A"></script>
     <script type="text/javascript" src="assets/map.js"></script>

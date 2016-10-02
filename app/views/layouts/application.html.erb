@@ -26,7 +26,7 @@
 
     <!-- CSS -->
     <link href="/assets/style.css" rel="stylesheet" type="text/css" />
-     <link href="/assets/bootstrap.css" rel="stylesheet" type="text/css" /> %>
+     <link href="/assets/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/assets/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/assets/ionicons.css" rel="stylesheet" type="text/css" />
     <link href="/assets/plugin/jPushMenu.css" rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@
      
 </head>
 
-<body class="full-intro">
+<body class="full-intro full-intro push-body" style="overflow: visible;">
    
     <!-- Preloader -->
     <section id="preloader">
@@ -51,7 +51,7 @@
     
     
     <%= render partial: 'partials/side_menu' %>
-   <!--  <%= render partial: 'partials/search_menu_top' %> -->
+   <% render partial: 'partials/search_menu_top' %> 
    
 
 
@@ -60,7 +60,7 @@
     <div class="wrapper">
 
         <!-- HEADER -->
-        <header class="header">
+        <header class="header sticky">
             <div class="container">
 
                 <!-- logo -->

@@ -14,7 +14,7 @@ function init() {
         scrollwheel: false, //set to true to enable mouse scrolling while inside the map area
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(21.170240, 72.831061), // Surat
+        center: new google.maps.LatLng(51.22067, 3.19339), // Surat
 
         // How you would like to style the map. 
         // This is where you would paste any style found on Snazzy Maps.
@@ -214,7 +214,7 @@ function init() {
 
     // Let's also add a marker while we're at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(21.170240, 72.831061),
+        position: new google.maps.LatLng(51.22067, 3.19339),
         map: map,
         title: 'Nileforest',
         icon: 'assets/map-marker.png'

@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: f2903c75511286837bef72bc5b04184c4fe3c0fe
-  specs:
-    rack-mini-profiler (0.10.1)
-      rack (>= 1.2.0)
-
-GIT
   remote: git://github.com/activeadmin/activeadmin.git
   revision: 85ab3f5961e1fab5d5c864ba9170b5e0fd1f6548
   specs:
@@ -455,7 +448,6 @@ DEPENDENCIES
   pg
   poltergeist
   puma
-  rack-mini-profiler!
   rails (>= 5.0.0, < 5.1)
   rails-controller-testing!
   rails_12factor
