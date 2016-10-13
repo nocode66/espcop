@@ -4,7 +4,3 @@
  *= require active_admin/editor/wysiwyg
  */
 
-.margin-top-none {
-  margin-top: 0;
-}
-
