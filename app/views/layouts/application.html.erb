@@ -25,13 +25,14 @@
     <link rel="apple-touch-icon" href="/assets/favicon.png">
 
     <!-- CSS -->
-    <% stylesheet_link_tag "style" %>
-    <% stylesheet_link_tag "bootstrap" %>
-    <% stylesheet_link_tag "font-awesome" %>
-    <% stylesheet_link_tag "ionicons" %>
-    <% stylesheet_link_tag "plugin/jPushMenu" %>
-    <% stylesheet_link_tag "plugin/animate" %>
 
+    <link href="/assets/style.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugin/jPushMenu.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugin/animate.css" rel="stylesheet" type="text/css" />
+    <%# <link href="/assets/jquery-ui.css" rel="stylesheet" type="text/css" /> %>
     
      <script src="https://js.stripe.com/v2/" async></script>
      
@@ -66,9 +67,9 @@
                 <!-- logo -->
                 <div class="logo">
                     <a href="home.html">
-                        <img class="l-black" src="/assets/logo-black.png" />
-                        <img class="l-white" src="/assets/logo-white.png" />
-                        <img class="l-color" src="/assets/logo-color.png" />
+                    <%= image_tag("logo-black", class:"l-black")%>
+                    <%= image_tag("logo-white", class:"l-white")%>
+                    <%= image_tag("logo-color", class:"l-color")%>
                     </a>
                 </div>
                 <!--End logo-->
