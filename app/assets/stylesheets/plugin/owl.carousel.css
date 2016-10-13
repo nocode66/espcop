@@ -43,7 +43,12 @@
     .owl-carousel .owl-item {
         float: left;
     }
-    
+
+.owl-controls .owl-page,
+.owl-controls .owl-buttons div {
+    cursor: default;
+}
+
 .owl-controls {
     -webkit-user-select: none;
     -khtml-user-select: none;
