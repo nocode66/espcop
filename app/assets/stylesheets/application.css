@@ -3,7 +3,6 @@
  *= require_self
  *= require active_admin/editor/wysiwyg
  */
-@import "growlyflash";
 
 .margin-top-none {
   margin-top: 0;
