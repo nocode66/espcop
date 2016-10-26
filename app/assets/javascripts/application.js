@@ -10,11 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require angular
 //= require growlyflash
-//= require_tree .
 
 
 Growlyflash.defaults = $.extend(true, Growlyflash.defaults, {
