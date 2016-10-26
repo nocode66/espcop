@@ -240,9 +240,6 @@ GEM
       multi_json (>= 1.11.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    growlyflash (0.9.1)
-      coffee-rails (>= 3.2.1)
-      railties (>= 3.2, < 5.1)
     has_scope (0.7.0)
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
@@ -459,7 +456,6 @@ DEPENDENCIES
   font-awesome-rails
   formtastic!
   gibbon
-  growlyflash
   inherited_resources!
   jbuilder (~> 2.0)
   kaminari!

@@ -37,7 +37,6 @@ gem 'gibbon'
 gem 'docverter'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'growlyflash'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'

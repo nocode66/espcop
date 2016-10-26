@@ -6,12 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_menu, unless: "admin_user_signed_in?"
 
 
-  use_growlyflash # except: %i[actions without growlyflash]
-
-# Also there is another shorthand, to skip callbacks:
-# skip_growlyflash only: %i[actions without growlyflash]
-
-
   protected
 
   def configure_permitted_parameters

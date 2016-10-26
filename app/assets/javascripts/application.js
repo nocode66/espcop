@@ -10,25 +10,4 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require growlyflash
 
-
-Growlyflash.defaults = $.extend(true, Growlyflash.defaults, {
-  align: 'right',
-  delay: 4000,
-  dismiss: true,
-  spacing: 10,
-  target: 'body',
-  title: false,
-  type: null,
-  "class": ['alert', 'growlyflash', 'fade']
-});
-
-
-jQuery(function() {
-  return $(document).on("touchstart.alert click.alert", ".growlyflash", function(e) {
-    e.stopPropagation();
-    ($(this)).alert('close');
-    return false;
-  });
-});
