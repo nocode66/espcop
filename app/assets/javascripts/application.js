@@ -16,6 +16,7 @@
 //= require growlyflash
 //= require_tree .
 
+
 Growlyflash.defaults = $.extend(true, Growlyflash.defaults, {
   align: 'right',
   delay: 4000,
