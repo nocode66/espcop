@@ -1,0 +1,16 @@
+<div class="item">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 mb-sm-30">
+        <h3><%= item.title %></h3>
+        <div class="spacer-15"></div>
+        <%= item.subtitle %>
+        <div class="spacer-15"></div>
+        <%= link_to "View Article", content_item_path(item), class: "btn btn-md btn-black" %>
+      </div>
+      <div class="col-md-6 col-md-offset-1">
+        <%= image_tag item.image %>
+      </div>
+    </div>
+  </div>
+</div>

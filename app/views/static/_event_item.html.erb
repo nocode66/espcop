@@ -1,0 +1,9 @@
+<div class="features-box-<%= position %>">
+  <% url = event.url.empty? ? event_path(event) : event.url  %>
+  <% target = event.url.empty? ? '_self' : '_blank ' %>
+  <%= link_to url,  target: target do %>
+    <div class='features-icon-<%=position%>'><i class="ion  ion-calendar"></i></div>
+    <h6><%= event.location%>, <strong><%= event.date.strftime("%B %d, %Y") %></strong></h6>
+    <p><%= event.title %></p>
+  <% end %>
+</div>

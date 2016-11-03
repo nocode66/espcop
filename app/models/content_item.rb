@@ -35,6 +35,7 @@ class ContentItem < ApplicationRecord
   scope :by_category, lambda { |category_id| where("category_id=?", category_id) }
   scope :recent,      lambda { where("published_date > ?", 1.week.ago) }
   scope :best_of,     lambda { where("best_of = true") }
+  scope :featured,    lambda { where("featured = true") }
 
 
   def archive

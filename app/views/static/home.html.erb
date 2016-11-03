@@ -1,54 +1,44 @@
-<div class="owl-carousel content-carousel content-slider">
-                <div class="item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 mb-sm-30">
-                                <img src="assets/moc-1.png" alt="" />
-                            </div>
-                            <div class="col-md-5 col-md-offset-1">
-                                <h3>Flexible & Customizable</h3>
-                                <div class="spacer-15"></div>
-                                <p>Cras dapibus Vivamus elementum semper nisi Aenean vulputate eleifend tellus Aenean leo ligula, porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet.</p>
-                                <p>porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet</p>
-                                <div class="spacer-15"></div>
-                                <a class="btn btn-md btn-black">Buy this Theme</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-5 mb-sm-30">
-                                <h3>Multipages & Onepage</h3>
-                                <div class="spacer-15"></div>
-                                <p>Cras dapibus Vivamus elementum semper nisi Aenean vulputate eleifend tellus Aenean leo ligula, porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet.</p>
-                                <p>porttitor eu consequat vitae Phasellus viverra nulla.</p>
-                                <div class="spacer-15"></div>
-                                <a class="btn btn-md btn-black">Download Theme</a>
-                            </div>
-                            <div class="col-md-6 col-md-offset-1">
-                                <img src="assets/moc-1.png" alt="" />
-                            </div>
+<div class="owl-carousel content-carousel content-slider">             
+    <% if @featured_events.count > 0 %>
+      <% @featured_events.each do | event| %>
+        <%= render partial: 'slider_event', locals: {item: event} %>
+      <% end %>
+    <%end%>
+    <% if @featured_content_items.count > 0 %>
+      <% @featured_content_items.each do | content_item| %>
+        <%= render partial: 'slider_content_item', locals: {items: content_item} %>
+      <% end %>
+    <%end%>                   
+</div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 mb-sm-30">
-                                <img src="assets/moc-2.png" alt="" />
-                            </div>
-                            <div class="col-md-5 col-md-offset-1">
-                                <h3>Fully Responsive</h3>
-                                <div class="spacer-15"></div>
-                                <p>Cras dapibus Vivamus elementum semper nisi Aenean vulputate eleifend tellus Aenean leo ligula, porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet.</p>
-                                <p>porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet</p>
-                                <div class="spacer-15"></div>
-                                <a class="btn btn-md btn-black">Buy this Theme</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+<section id="service" class="wow fadeIn pt pb-80">
+  <div class="container text-center">
+    <div class="row text-center">
+      <div class="col-md-8 col-md-offset-2">
+        <h3 class="h4">The European Society for Perioperative Care of the Obese Patient</h3>
+        <div class="spacer-15"></div>
+        <p class="lead">The ESPCOP is a non profit organization for the peri operative care of the obese patient. It has the aim to affiliate into one organization, all anesthetists, intensivists and non physicians who are engaged in the clinical care, education and in the research of the obese surgical patient.</p>
+        <p class="lead">
+        Founded in feb 2009 in Bruges this society is intended for all European Anaesthesiologist active with obese patients. It is staying open also for Non European and non anesthetist physicians.</p>
+      </div>
+    </div>
+    <hr/>
+    <div class="row mt-60">
+      <div class="wow fadeInLeft col-md-4 pt-80 pt-sm-0">
+        <%  @espcop_events.each do |event | %>
+          <%= render partial: "event_item", locals: {event: event, position: 'right' }%>
+        <% end %>                       
+      </div>
+ 
+    <div class="wow fadeIn col-md-4 text-center hidden-sm">
+      <%= image_tag('moc-3.png')%>
+    </div>
+
+    <div class="wow fadeInRight col-md-4 pt-80 pt-sm-0">
+    <% @non_espcop_events.each do |event | %>
+        <%= render partial: "event_item", locals: {event: event, position: 'left' }%>  
+    <% end %>   
+    </div>
+  </div>
+</section>
