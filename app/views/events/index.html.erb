@@ -4,9 +4,9 @@
 <section class="inner-intro bg-img10 overlay-light parallax parallax-background2">
     <div class="container">
         <div class="row title">
-            <h2 class="h2">Portfolio</h2>
+            <h2 class="h2">Events</h2>
             <div class="page-breadcrumb">
-                <a>Home</a>/<a>Portfolio</a>/<span>Grid</span>
+                <a>Home</a>/<a>Events</a>/
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                     <div class="item-box">
                         <% unless event.url.empty? %>
                             <%= link_to event.url, target: :blank do %>
-                                <img alt="1" src="assets/portfolio/1.jpg" class="item-container">
+                                <img alt="1" src="/assets/images/portfolio/1.jpg" class="item-container">
                                 <div class="item-mask">
                                     <div class="item-caption">
                                         <h6 class="white"><%= event.title%></h6>
@@ -44,7 +44,7 @@
                             <% end %>
                         <% else %>
                             <%= link_to event_path(event) do %>
-                                <img alt="1" src="assets/portfolio/1.jpg" class="item-container">
+                                <img alt="1" src="/assets/images/portfolio/1.jpg" class="item-container">
                                 <div class="item-mask">
                                     <div class="item-caption">
                                         <h6 class="white"><%= event.title%></h6>
