@@ -1,0 +1,2 @@
+export STRIPE_MY_PUBLISHABLE_KEY=' pk_test_EZ0TvipxpthxAn3bfz36hvSt'
+export STRIPE_MY_SECRET_KEY='sk_test_W7rCcbVN3gQ5n1PAazCU05x3'

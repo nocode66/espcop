@@ -1,0 +1,136 @@
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+        <!-- CONTENT --------------------------------------------------------------------------------->
+
+        <!-- Intro Section -->
+        
+        <section class="inner-intro  bg-img10 overlay-dark light-color parallax parallax-background2">
+         
+            <div class="container">
+                <div class="row title">
+                    <h2 class="h2"><%= @event.title %></h2>
+                    <div class="page-breadcrumb">
+                        <a><%= @event.date.strftime("%B %d, %Y")%> </a>/<span><%= @event.location %></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <!-- End Intro Section -->
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+            <%= value %>
+        </div>
+      <% end %>
+    
+
+        <!-- Sidebar Section -->
+        <section class="ptb ptb-sm-80">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-9 col-sm-8">
+                        <div>
+                        <%= image_tag(@event.image.url) if @event.image?   %> </div>
+                        <%= @event.content %>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 mt-xs-30">
+
+                        <div class="sidebar-widget">
+                            <h5>Event Details</h5>
+                            <hr>
+                           
+                                <h6>TITLE:</h6> <p><%= @event.title%></p>
+                                <hr>
+                                <h6>DATE:</h6> <p><%= @event.date.strftime("%B %d, %Y") %></p>
+                                <hr>
+                                <h6>LOCATION:</h6> <p><%= @event.location %></p>
+                               
+                           
+                        </div>
+                        <% if @event.registration? && @event.price %>
+                         <div class="sidebar-widget">
+                            <h5>Register for this event</h5>
+                            <hr>
+                              <%= form_tag charges_path do %>
+                             <input type="hidden" name="event_id" value="<%=@event.id%>">
+                             <input type="hidden" name="amount" value="<%= @event.price * 100 %>">
+                             <input type="hidden" name="currency" value="<%= @event.currency %>">
+                              <input type="hidden" name="description" value="<%= @event.title %>">
+  <article>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: <%= @event.price%> <%= @event.currency.capitalize %></span>
+    </label>
+  </article>
+
+
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= @event.title %>"
+          data-name="ESPCOP"
+          data-image="<%= image_path('logo-black.png')%>"
+          data-amount="<%= @event.price*100 %>"
+          data-currency ="<%= @event.currency %>"
+          data-locale="auto"
+          data-billing-address="true" 
+          >
+
+          </script>
+<% end %>
+                                
+                                </div>  
+                        <% end %>   
+                     
+
+                        <% if @event.description %>
+                            <div class="sidebar-widget">
+                            <h5>About this event</h5>
+                            <hr>
+                            <%= @event.description %>
+                        </div>
+                        <% end %>
+                        <div class="sidebar-widget">
+                            <h5>Upcoming EVENTS</h5>
+                            <hr>
+                            <ul class="widget-post">
+                                <% @upcoming_events.each do |event| %>
+                                <% if event != @event %>
+                                <li>      
+                                    <div class="widget-post-info">
+                                        <h6><a><%= event.title %></a></h6>
+                                        <div class="post-meta"><span><%= event.location%> - <%= event.date.strftime("%B %d, %Y") %></span></div>
+                                    </div>
+                                </li>
+                                <% end %>
+                             <% end %>
+                            </ul>
+                        </div>
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Sidebar Section -->
+
+        <!-- End CONTENT ------------------------------------------------------------------------------>
+
+
+
+    
+      

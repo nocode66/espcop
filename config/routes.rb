@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :content_items, only: [:show], path: 'articles'
   resources :category, only: [:show]
   resources :newsletters, only: [:index]
+  resources :charges
   
   get '/past-events', to: 'events#past'
   get '/events', to: 'events#future'

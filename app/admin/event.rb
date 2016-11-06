@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
   
   config.sort_order = 'date_desc'
-  permit_params :title, :location, :date, :price, :espcop, :registration, :url, :featured, :featured_order, :image, :content, :currency
+  permit_params :title, :location, :date, :price,:description, :espcop, :registration, :url, :featured, :featured_order, :image, :content, :currency
 
 
 
@@ -13,6 +13,7 @@ ActiveAdmin.register Event do
       f.input :url, include_blank: false
        f.input :image, hint: f.event.image? ? image_tag(f.event.image.url(:thumb), height: '100') : content_tag(:span, "Upload JPG/PNG/GIF image")
       f.input :content
+      f.input :description
       f.input :espcop, :as => :select, collection: [true, false], include_blank: false
       f.input :registration, :as => :select, collection: [true, false], include_blank: false
       f.input :price

@@ -5,4 +5,5 @@ class Event < ApplicationRecord
   scope :featured,     lambda { where("featured = true") }
   scope :espcop,     lambda { where("espcop= true") }
   scope :nonespcop,     lambda { where("espcop = false") }
+  scope :upcoming,  lambda { where("date >= ?", Time.now ).order(date: :asc) }
 end
