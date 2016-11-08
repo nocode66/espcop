@@ -1,6 +1,8 @@
 #= require active_admin/base
 #= require tinymce
-
+#= require tinymce/plugins/uploadimage/editor_plugin.js
+#= require tinymce/plugins/uploadimage/langs/en.js
+#= require tinymce/plugins/uploadimage/langs/en_dlg.js
 
 $(document).ready ->
   tinyMCE.init
