@@ -7,7 +7,7 @@
     <div class="col-md-5 col-md-offset-1">
       <h3><%= item.title %></h3>
       <div class="spacer-15"></div>
-      <%= item.description.html_safe %>
+      <%= item.description.html_safe if item.description %>
       <div class="spacer-15"></div>
       <% if item.url.empty? %>
         <%= link_to "View Event", event_path(item), class: "btn btn-md btn-black" %>
