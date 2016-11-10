@@ -98,7 +98,7 @@
                             <div class="sidebar-widget">
                             <h5>About this event</h5>
                             <hr>
-                            <%= @event.description %>
+                            <%= @event.description.html_safe %>
                         </div>
                         <% end %>
                         <div class="sidebar-widget">
