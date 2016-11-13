@@ -39,7 +39,7 @@ end
 
 
 
-form do |f|
+form :html => { :enctype => "multipart/form-data" } do |f|
   f.inputs "Basic info" do
     f.input :title
     f.input :subtitle
@@ -49,7 +49,7 @@ form do |f|
     f.input :commentable
     f.input :visible
     f.input :category, collection: Category.all, allow_blank: false, include_blank: false
-    f.input :image, hint: f.content_item.image? ? image_tag(f.image.image.url(:thumb), height: '100') : content_tag(:span, "Upload JPG/PNG/GIF image")
+    f.input :image, hint: f.content_item.image? ? image_tag(f.content_item.image.url(:thumb), height: '100') : content_tag(:span, "Upload JPG/PNG/GIF image")
 
     f.input :content, :input_html => { :class => "tinymce" }
   end

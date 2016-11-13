@@ -1,7 +1,7 @@
 class ContentItem < ApplicationRecord
   include Naming
 
-  belongs_to :author, foreign_key: :author_id, primary_key: :id, class_name: 'AdminUser'
+  #belongs_to :author, foreign_key: :author_id, primary_key: :id, class_name: 'AdminUser'
   belongs_to :category
 
 
