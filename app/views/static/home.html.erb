@@ -5,8 +5,8 @@
       <% end %>
     <%end%>
     <% if @featured_content_items.count > 0 %>
-      <% @featured_content_items.each do | content_item| %>
-        <%= render partial: 'slider_content_item', locals: {items: content_item} %>
+      <% @featured_content_items.each do |item| %>
+        <%= render partial: 'slider_content_item', locals: {item: item} %>
       <% end %>
     <%end%>                   
 </div>

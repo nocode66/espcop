@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   resources :subscription_plans, only: [:index]
   resources :content_items, only: [:show], path: 'articles'
-  resources :category, only: [:show]
+  resources :categories, only: [:show]
   resources :newsletters, only: [:index]
   resources :charges
   

@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class ContentItemsController < ApplicationController
 
   def show
     @content_item = ContentItem.find(params[:id])
