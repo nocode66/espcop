@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_menu
-    @categories = Category.all.select{ |r| r.has_published_articles? } 
+    @categories_menu = Category.all.select{ |r| r.has_published_articles? } 
   end
 end

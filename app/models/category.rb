@@ -1,11 +1,13 @@
 class Category < ApplicationRecord
   has_many :content_items
-  has_attached_file :image, styles: {thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image, styles: {thumb: "100x100>" }, default_url: "/assets/:style/missing.png"
   
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :order, presence: true, uniqueness: true
+
+  accepts_nested_attributes_for :content_items
   
   before_save :set_default, if: :default?
   before_destroy :check_destroy_prerequisites

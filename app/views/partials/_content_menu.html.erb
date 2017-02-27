@@ -1,8 +1,9 @@
-<% unless @categories.nil? %>
-  <% @categories.each do  |category| %>
-     <a><%= category.name %></a>
+<% unless @categories_menu.nil? %>
+  <% @categories_menu.each do  |category_item| %>
+     <li>
+     <a><%= category_item.name %></a>
      <ul class="nav-dropdown">
-     <% category.content_items.each do |ci| %>
+     <% category_item.content_items.each do |ci| %>
           <% if ci.visible? %>
                <li>
               <%= link_to ci.title, ci %>
@@ -10,6 +11,7 @@
           <% end %>    
      <% end %>
      </ul>
+     </li>
   <% end %>
 <% end %>
 

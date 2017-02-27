@@ -1,0 +1,49 @@
+        <!-- Intro Section -->
+       <section class="inner-intro  overlay-dark light-color parallax parallax-background2" style="background-position: 0% -85.5px;background-image: url('<%= @content_item.image || '/assets/logo-black.png' %>');">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="h2"><%= @content_item.title %></h2>
+                    <div class="page-breadcrumb">
+                       <span><a><%= @content_item.subtitle %></a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="clearfix"></div>
+
+
+
+
+
+
+        <!-- Blog Post Section -->
+        <section class="ptb ptb-sm-80">
+            <div class="container">
+                <div class="row">
+                    <!-- Post Item -->
+                    
+                    <div class="col-md-8 col-md-offset-2 blog-post-hr">
+                        <div class="blog-post mb-30">
+                
+                            <div class="post-meta"><span>published on:</span> <span><%= @content_item.created_at.strftime("%B %d, %Y") %> </div>
+                            <div class="post-header">
+                                <h4><a href="blog-single-slider-post.html"><%= @content_item.title %></a></h4>
+                            </div>
+                            <div class="post-entry">
+                                <%= @content_item.content.html_safe %>
+                            <div class="post-tag pull-left"><span><%= link_to @content_item.category.name, category_path(@content_item.category) %></span></div>
+                           
+                        </div>
+
+                        <hr />
+
+                    </div>
+                    <!-- End Post Item -->
+
+
+
+
+                </div>
+            </div>
+        </section>

@@ -1,0 +1,9 @@
+<div class="sidebar-widget">
+  <h5>Categories</h5>
+  <hr>
+  <ul>
+  <% @categories_menu.each do |cat| %>
+    <li><%= link_to cat.name, category_path(cat) %></li>
+  <% end %>
+  </ul>
+</div>

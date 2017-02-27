@@ -1,0 +1,13 @@
+<div class="sidebar-widget">
+                            <h5>Articles</h5>
+                            <hr>
+                            <ul class="widget-post">
+                                <% @articles.each do |article| %>
+                                <li>
+                                    <div class="widget-post-info">
+                                        <h6><%= link_to article.title, content_item_path(article) %></h6>
+                                    </div>
+                                </li>
+                                <% end %>
+                            </ul>
+                        </div>
