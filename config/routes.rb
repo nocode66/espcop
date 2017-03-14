@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static#about', as: 'about'
   get '/contact', to: 'static#contact', as: 'contact'
   get '/board', to: 'static#board', as: 'board'
+  post 'emailapi/subscribe' => 'emailapi#subscribe'
   
   
   resources :subscription_plans, only: [:index]

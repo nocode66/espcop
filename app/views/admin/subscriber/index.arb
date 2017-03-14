@@ -1,0 +1,6 @@
+table_for @arbre_context.assigns[:subscribers] do 
+  column :id
+  column :email_address
+  column :status
+  column (:name) { |subscriber| subscriber[:merge_fields][:FNAME]+" "+subscriber[:merge_fields][:LNAME]  }
+end

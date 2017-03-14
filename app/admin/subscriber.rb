@@ -22,8 +22,9 @@ ActiveAdmin.register Subscriber do
 
 controller do
     def index
-      gibbon = Gibbon::Request.new
-      gibbon.lists(list_id).members.retrieve(params: {"count": "50"})
+      gibbon = Gibbon::Request.new(debug: true)
+      @subscribers = gibbon.lists('6586f844ec').members.retrieve(params: {"count": "1000"}).body[:members]
+      
       render 'admin/subscriber/index', :layout => 'active_admin'
     end
 

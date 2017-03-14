@@ -12,10 +12,13 @@
                     <!-- Newsletter -->
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-xs-30">
                         <div class="newsletter">
-                            <form>
-                                <input type="email" class="newsletter-input input-md newsletter-input mb-0" placeholder="Enter Your Email">
-                                <button class="newsletter-btn btn btn-xs btn-white" type="submit" value=""><i class="fa fa-angle-right mr-0"></i></button>
-                            </form>
+                           <%= form_tag('/emailapi/subscribe', id: "subscribe", remote: "true") do -%>
+                             <%= email_field(:email, :address, {id: "email", placeholder: "Subscribe to our newsletter", class: "newsletter-input input-md newsletter-input mb-0"}) %>
+                             
+                             <%= button_tag( :class => "newsletter-btn btn btn-xs btn-white") do %>
+                               <i class="fa fa-angle-right mr-0"></i>
+                             <% end %>
+                            <% end %> 
                         </div>
                     </div>
                     <!-- End Newsletter -->
