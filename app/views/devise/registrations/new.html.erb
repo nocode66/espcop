@@ -67,7 +67,7 @@
 		  <% else %>
 			  <div class='form-group has-feedback'>
 			  	<%= label_tag :card_number, "Credit Card Number" %>
-			  	<%= text_field_tag :card_number, nil,   maxlength: 24, name: nil, class: 'input-sm form-full', pattern: "[0-9]{13,16}",  placeholder: "1112 1112 1112 1112" %>
+			  	<%= text_field_tag :card_number, nil,   maxlength: 24, name: nil, class: 'input-sm form-full', pattern: "[0-9]{13,16}" %>
 			  </div>
               <div class='row'>
     			  <div class='form-group col-md-6'>

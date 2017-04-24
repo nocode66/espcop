@@ -8,17 +8,18 @@ Rails.application.routes.draw do
   get '/board', to: 'static#board', as: 'board'
   post 'emailapi/subscribe' => 'emailapi#subscribe'
   
-  
+
   resources :subscription_plans, only: [:index]
   resources :content_items, only: [:show], path: 'articles'
   resources :categories, only: [:show]
   resources :newsletters, only: [:index]
   resources :charges
+  resources :card
   
   get '/past-events', to: 'events#past'
   get '/events', to: 'events#future'
 
-  devise_for :users
+  devise_for :users 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   

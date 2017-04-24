@@ -14,11 +14,11 @@
         <div class="pricing-features spacing-grid">
             <ul>
                 <li>Full access</li>
-                <li>
-                    <%=plan.tokens %> Download <strong>Tokens</strong></li>
-                <li>
-                    <%=plan.trial_period_days > 0 ? pluralize(plan.trial_period_days, 'Day Trial') : ' <br />'.html_safe %>
-                </li>
+                <% if plan.trial_period_days.present? %>
+                    <li>
+                        <%= plan.trial_period_days > 0 ? pluralize(plan.trial_period_days, 'Day Trial') : ' <br />'.html_safe %>
+                    </li>
+                <% end %>
             </ul>
         </div>
         <hr />

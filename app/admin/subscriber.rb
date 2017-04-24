@@ -22,6 +22,7 @@ ActiveAdmin.register Subscriber do
 
 controller do
     def index
+       @page_title = "Newsetter Subscribers"
       gibbon = Gibbon::Request.new(debug: true)
       @subscribers = gibbon.lists('6586f844ec').members.retrieve(params: {"count": "1000"}).body[:members]
       
@@ -45,3 +46,7 @@ controller do
     end
   end
 end
+
+
+
+

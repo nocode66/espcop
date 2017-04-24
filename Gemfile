@@ -56,6 +56,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'valid_url'
 gem "font-awesome-rails"
 gem 'ionicons-rails'
+gem 'rake', '< 11.0'
 
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-bundler', '~> 1.1.2'

@@ -1,9 +1,10 @@
 <h5 class="white">Sign In</h5>
   <div class="sign-in">
-    <input class="input-sm form-full" type="email" aria-required="true" id="email" name="email" placeholder="Email" value="" />
-    <input class="input-sm form-full" type="password" aria-required="true" id="password" name="password" placeholder="Password" value="" />
-    <input type="submit" class="btn btn-md btn-color-b form-full" value="Sign In" />
-    <a>New Member?</a>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.email_field :email, autofocus: true, placeholder: "Email",   class: "input-sm form-full", required: true %>
+      <%= f.password_field :password, placeholder: "password", autocomplete: "off", class: "input-sm form-full", required: true %>
+      <%= f.submit "Sign In", class: "btn btn-md btn-color-b form-full" %>
+  <% end -%>
   </div>
 
 <ul>
