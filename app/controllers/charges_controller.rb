@@ -24,9 +24,9 @@ def create
 
 flash[:success] = "You are now registered for this event. Thank for registering! "
 redirect_to event_path(@event)
-rescue Stripe::CardError => e
-  flash[:error] = e.message
-  redirect_to event_path(@event)
-end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to event_path(@event)
+  end
 
 end

@@ -2,70 +2,142 @@
             <div class="container">
              <div class="row">
 
-<h2>Edit Profile</h2>
+
+
+ <div class="col-md-6  col-sm-8 ">
+  <div class="border-box">
+    <h2>Edit Profile</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-field-wrapper">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </span>
+      <%= f.email_field :email, autofocus: true,  placeholder: "Enter your Email", class: "input-sm form-full" %>
+    </div>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="form-field-wrapper">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off" , class: "input-sm form-full" %>
+  </div>
+  
+  <%= f.label  :password_confirmation %><br />
+  <div class="form-field-wrapper">
+    
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "input-sm form-full " %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
+  <div class="form-field-wrapper">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", class: "input-sm form-full" %>
   </div>
 
 
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" ,class: "btn btn-md btn-black" %>
   </div>
 <% end %>
+</div>
 
 
+
+<div class="col-md-6  col-sm-8 ">
+  <div class="border-box">
 <h3>Update Credit Card</h3>
-<p>Your current card on file is:</p>
-<div> <%= current_user.card_type %> **** **** **** <%= current_user.card_last4 %></div>
-<div> Expires: <%= current_user.card_exp_month %>/<%= current_user.card_exp_year %></div>
+<p>Your current card is: <%= current_user.card_type %>  **** **** **** <%=current_user.card_last4 %> <br/>
+Expiring on:    <%= current_user.card_exp_month %>/<%= current_user.card_exp_year %>  
+</p>
+
 <hr />
-<% form_tag user_update_card, method: :put  do %>
- <div class='form-group has-feedback'>
-          <%= label_tag :card_number, "Credit Card Number" %>
-          <%= text_field_tag :card_number, nil,   maxlength: 24, name: nil, class: 'input-sm form-full', pattern: "[0-9]{13,16}" %>
-        </div>
+<%= form_tag update_card_path, method: :put  do %>
+ 
               
-        <div class='row'>
-            <div class='form-group col-md-6'>
-              <%= label_tag :card_code, "Security Code on Card (CVV)" %><br />
-            <%= text_field_tag :card_code, nil, name: nil, maxlength: 3 %>
-            </div>
-             <div class='form-group'> 
-            <%= label_tag :card_month, "Card Expiration" %> <br />
-            <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-            </div>
-        </div>
-        <%= f.submit "Update Card" %>
- <% end %> 
+      <div class="form-row">
+        <label for="card-element">Credit or debit card</label>
+        <div id="card-errors"></div>
+        <div id="card-element"></div>
+      </div>
+<%= submit_tag "Update Card" ,class: "btn btn-md btn-black", style: "margin-top:10px;" %>
+<% end %> 
+
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class: "btn btn-md btn-black" %></p>
+</div>
 
 </div>
 </div>
 </section>
+
+
+
+
+
+ <script>
+        // Create a Stripe client
+var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key]%>');
+
+// Create an instance of Elements
+var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+  base: {
+    color: '#32325d',
+    lineHeight: '24px',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+      color: '#aab7c4'
+    }
+  },
+  invalid: {
+    color: '#fa755a',
+    iconColor: '#fa755a'
+  }
+};
+
+// Create an instance of the card Element
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>
+card.mount('#card-element');
+
+// Handle real-time validation errors from the card Element.
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+
+// Handle form submission
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+    stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server
+      field = document.getElementById('user_stripe_card_token');
+      field.value=result.token.id;
+      form.submit();
+    }
+  });
+});
+        </script>
