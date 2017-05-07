@@ -1,5 +1,6 @@
 set :stage, :production
 set :rails_env, 'production'
+set :bundle_binstubs, nil
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
