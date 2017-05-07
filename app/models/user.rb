@@ -9,7 +9,11 @@ class User < ApplicationRecord
   validates :subscription_plan,  presence: true
    
    after_create :create_a_customer
+   before_destroy :delete_a_customer
 
+
+
+private
          def create_a_customer
          	token = self.stripe_card_token
          	customer = Stripe::Customer.create(
@@ -24,5 +28,11 @@ class User < ApplicationRecord
           self.card_exp_month=stripe_customer_params['sources']['data'].first['exp_month']
           self.card_exp_year=stripe_customer_params['sources']['data'].first['exp_year']
           self.save
+         end
+
+
+         def delete_a_customer
+           cu = Stripe::Customer.retrieve(self.stripe_id)
+           cu.delete   
          end
 end
