@@ -57,9 +57,9 @@ Expiring on:    <%= current_user.card_exp_month %>/<%= current_user.card_exp_yea
 </p>
 
 <hr />
-<%= form_tag update_card_path, method: :put  do %>
+<%= form_tag update_card_path, method: :put, id:"payment_form"  do %>
  
-              
+      <%= hidden_field_tag :stripe_card_token %>        
       <div class="form-row">
         <label for="card-element">Credit or debit card</label>
         <div id="card-errors"></div>
@@ -122,9 +122,8 @@ card.addEventListener('change', function(event) {
     displayError.textContent = '';
   }
 });
-
 // Handle form submission
-var form = document.getElementById('payment-form');
+var form = document.getElementById('payment_form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
     stripe.createToken(card).then(function(result) {
@@ -134,7 +133,7 @@ form.addEventListener('submit', function(event) {
       errorElement.textContent = result.error.message;
     } else {
       // Send the token to your server
-      field = document.getElementById('user_stripe_card_token');
+      field = document.getElementById('stripe_card_token');
       field.value=result.token.id;
       form.submit();
     }
