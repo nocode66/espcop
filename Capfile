@@ -3,7 +3,7 @@ require 'capistrano/setup'
 
 # Includes default deployment tasks
 require 'capistrano/deploy'
-require 'capistrano/rails'
+#require 'capistrano/rails'
 # If you are using rvm add these lines:
 require 'capistrano/rvm'
 require 'capistrano/rails/console'
@@ -25,7 +25,7 @@ set :rvm_ruby_version, '2.3.1-p112'
 # require 'capistrano/rbenv'
 # require 'capistrano/chruby'
 # require 'capistrano/bundler'
-require 'capistrano/rails/assets'
+# require 'capistrano/rails/assets'
 # require 'capistrano/rails/migrations'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
