@@ -8,6 +8,7 @@
   <% end %>
   <li><%= link_to 'Board', board_path %></li>
   <li><%= link_to 'Contact', contact_path %></li>
+  <li><%= link_to 'Newsletter Archive', newsletters_path %></li>
   <li><%=  link_to('My Profile', edit_user_registration_path) %></li>
   <li><%=  button_to('Log Out', destroy_user_session_path, :method => :delete, class: "btn btn-md btn-color-b form-full") %></li>
 </ul>

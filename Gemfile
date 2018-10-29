@@ -43,7 +43,7 @@ gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
 
 # Active admin Rails 5 Depencecies
 gem 'ransack',    github: 'activerecord-hackery/ransack'
-gem 'kaminari',   github: 'amatsuda/kaminari', branch: '0-17-stable'
+gem 'kaminari' #,   github: 'amatsuda/kaminari', branch: '0-17-stable'
 gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
 # To fix a Draper deprecation error
